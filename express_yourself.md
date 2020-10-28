@@ -43,6 +43,11 @@ respuesta `404 not found`
 
 ```
 
+- Las rutas se vuelven más poderosas cuando pueden ser utilizadas de manera dinámica. El servidor
+de express provee esta funcionalidad llamada `route parameters`
+
+- Los parámetros son segmentos de ruta que empiezan con (:), por ejemplo, `/expression/:id`, puedes acceder al valor a través del objeto `req.params`
+
 
 ### Correlación entre ruta y verbo http
 
