@@ -23,7 +23,7 @@ app.get('/expressions', (req, res, next) => {
 app.get('/expressions/:id', (req, res, next) => {
   const id = req.params.id
   const elemento = getElementById(id, arrExpressions);
-  res.send(elemento);
+  !elemento ? res.status(404).send('no hay expresion para ese id') : res.send(elemento);
 })
 
 
