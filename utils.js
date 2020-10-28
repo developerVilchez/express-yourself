@@ -18,9 +18,10 @@ const getIndexById = (id, elementList) => {
 
 /*
   Para crear tienes que enviar el emoji y el name sino no se crea
-  el id se coloca a través de un contador
+  el id se autogenera a través de un contador
   Crear un objeto tipo expressions o animals, se asegura que se envíe 
   {id: 1, emoji: '=)', name: 'happy'}
+
 */
 
 const createElement = (elementType, queryArguments) => {
