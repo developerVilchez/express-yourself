@@ -107,6 +107,21 @@ como coincide la ruta con el path, se invoca a la función de callback que manej
 
 - Las peticiones del tipo `put` son utilizadas para actualizar un recurso existente. 
 
+- Podemos hacer aún más interesantes nuestras rutas utilizando **query string**. Lo que me permite
+envíar más información al momento que el cliente realiza una petición. Suelen aparecer al final del la `url` y son los que aparecen luego del caracter `?`
+
+```js
+  const ruta = 'http://localhost:4000/expressions/1?name=lulu&age=12'
+  `query string` : 'name=lulu&age=12'
+  `path` : '/expressions/1'
+  `parametro` : 1
+```
+- Los `query string` no cuentan como parte de la ruta. El servidor express lo analiza en un objeto javascript y lo adjunta al cuerpo de la solicitud en el objeto `req.query`
+
+```js
+ const ruta = 'http://localhost:4000/expressions/1?name=lulu&age=12'
+ console.log(req.query)  //{name: 'lulu', age: 12}
+```
 
 ### Correlación entre ruta y verbo http
 

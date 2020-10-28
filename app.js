@@ -33,8 +33,11 @@ app.get('/expressions/:id', (req, res, next) => {
 Esta ruta permitirá actualizar una el nombre o emoji de una expression que ya se 
 encuentre en la bd. Por esa razón pedimos como parámetro un valor único por el cual se pueda identificar el recurso a actualizar
 */
-app.put('/expressions/:id', (req, res, send) => {
-
+app.put('/expressions/:id', (req, res, next) => {
+ const id = req.params.id;
+ const query = req.query; 
+ const expression = getElementById(id, arrExpressions);
+ !expression ? res.status(404).send('No existe expresion con ese id') : res.send(updateElement(id, query, arrExpressions))
 })
 
 

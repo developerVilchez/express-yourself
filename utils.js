@@ -54,8 +54,8 @@ const updateElement = (id, queryArguments, elementList) => {
   if (elementIndex === -1) {
     throw new Error('updateElement must be called with a valid id parameter');
   }
-  if (queryArguments.id) {
-    queryArguments.id = Number(queryArguments.id);
+  if (!queryArguments.id) {
+    queryArguments.id = Number(id);
   }
   //Aquí se usa object.assing para fusionar el objeto del array original con 
   //el objeto que viene de entrada en queryArguments
