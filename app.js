@@ -1,6 +1,13 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const { seedElements } = require('./utils');
+
+const arrExpressions = [];
+// Poblamos la función arrExpressions
+seedElements(arrExpressions, 'expressions');
+
+
 
 //Middlewares
 app.use(express.static(path.join(__dirname, 'public')))
@@ -8,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 //Rutas
 
 app.get('/expressions', (req, res, next) => {
-  console.log(req)
+  res.send(arrExpressions);
 })
 
 
