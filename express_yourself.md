@@ -103,6 +103,11 @@ como coincide la ruta con el path, se invoca a la función de callback que manej
 
 ```
 
+- Express te permite trabajar con otros métodos http, como `POST`, `PUT/PATCH`, `DELETE` de la siguiente manera : `app.post(), app.puth(), app.patch(), app.delete()`
+
+- Las peticiones del tipo `put` son utilizadas para actualizar un recurso existente. 
+
+
 ### Correlación entre ruta y verbo http
 
 - uri : `http://localhost:4000/`
@@ -112,5 +117,11 @@ como coincide la ruta con el path, se invoca a la función de callback que manej
 
 | Ruta                                        | http                                   |
 | ------------------------------------------- | -------------------------------------- |
-|`http://localhost:4000/expressions/`           | Get: recuperar todas las expresiones   |
-| Campo A1                                    | Campo B1                               |
+|`http://localhost:4000/expressions/`         | GET: recuperar todas las expresiones   |
+|`http://localhost:4000/expressions/:id`      | GET: recupera expresion por id         |
+
+
+
+### Códigos de estados http
+
+![codigos estado http](images_readme/codigos_estado_http.png)

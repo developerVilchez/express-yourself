@@ -1,13 +1,15 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const { seedElements, getElementById} = require('./utils');
+const PORT = 4000 || process.env.PORT;
+
+//Metodos uitls para utilizar
+const { seedElements, getElementById, updateElement} = require('./utils');
 
 const arrExpressions = [];
+
 // Poblamos la función arrExpressions
 seedElements(arrExpressions, 'expressions');
-
-
 
 //Middlewares
 app.use(express.static(path.join(__dirname, 'public')))
@@ -26,8 +28,15 @@ app.get('/expressions/:id', (req, res, next) => {
   !elemento ? res.status(404).send('no hay expresion para ese id') : res.send(elemento);
 })
 
+/*
 
-const PORT = 4000 || process.env.PORT;
+Esta ruta permitirá actualizar una el nombre o emoji de una expression que ya se 
+encuentre en la bd. Por esa razón pedimos como parámetro un valor único por el cual se pueda identificar el recurso a actualizar
+*/
+app.put('/expressions/:id', (req, res, send) => {
+
+})
+
 
 
 app.listen(PORT, () => {
