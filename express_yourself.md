@@ -48,15 +48,30 @@ de express provee esta funcionalidad llamada `route parameters`
 
 - Los parámetros son segmentos de ruta que empiezan con (:), por ejemplo, `/expression/:id`, puedes acceder al valor a través del objeto `req.params`
 
+```js
+A) cliente request: get('/expressions/1') 
+
+app.get('/expressions/:id', (req, res, next) => {
+  console.log(req.params) // {id: 1}
+})
+
+B) cliente request: get('/expressions/1/happy') 
+
+app.get('/expressions/:id/:name', (req, res, next) => {
+  console.log(req.params) // {id: 1, name: happy}
+})
+
+```
+
 
 ### Correlación entre ruta y verbo http
 
 - uri : `http://localhost:4000/`
 - hostname : `localhost`
-- port : 4000
+- port : `4000`
 
 
 | Ruta                                        | http                                   |
 | ------------------------------------------- | -------------------------------------- |
-|`http://localhost:4000/expression`           | Get: recuperar todas las expresiones   |
+|`http://localhost:4000/expressions/`           | Get: recuperar todas las expresiones   |
 | Campo A1                                    | Campo B1                               |
