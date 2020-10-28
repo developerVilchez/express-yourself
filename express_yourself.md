@@ -118,6 +118,11 @@ envíar más información al momento que el cliente realiza una petición. Suele
 ```
 - Los `query string` no cuentan como parte de la ruta. El servidor express lo analiza en un objeto javascript y lo adjunta al cuerpo de la solicitud en el objeto `req.query`
 
+
+- El método del tipo `post` nos permite crear un nuevo elemento en la base de datos. Por lo tanto 
+al momento de hacer el request tendremos que envíar los datos que queremos que tenga este nuevo recurso, para ello nos volveremos a apoyar del `query string`
+
+
 ```js
  const ruta = 'http://localhost:4000/expressions/1?name=lulu&age=12'
  console.log(req.query)  //{name: 'lulu', age: 12}
