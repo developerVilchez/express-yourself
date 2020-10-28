@@ -8,7 +8,8 @@ const {
         seedElements, 
         getElementById, 
         updateElement, 
-        createElement
+        createElement,
+        deleteElementById
       } = require('./utils');
 
 //console.log(createElement('expressions', {name:'teresa', emoji:'=)'}))     
@@ -46,6 +47,10 @@ app.put('/expressions/:id', (req, res, next) => {
  !expression ? res.status(404).send('No existe expresion con ese id') : res.send(updateElement(id, query, arrExpressions));
 });
 
+/*
+Ruta que me permite crear una nueva expresión utilizando el queryString como herramienta
+para los atributos y valores que quiero que tenga el nuevo objeto
+*/
 
 app.post('/expressions', (req, res, next) => {
   const query = req.query;
@@ -63,6 +68,21 @@ app.post('/expressions', (req, res, next) => {
   }
 })
 
+/* 
+ ruta que me permite eliminar un elemento de la db, necesito indicar un valor único
+ que me permita identifcar que recurso eliminar
+*/
+
+app.delete('/expressions/:id', (req, res, next) => {
+  const id = req.params.id;
+  const elementDelete = deleteElementById(id, arrExpressions);
+  if(!elementDelete) {
+    res.status(400).send('El elemento a eliminar no existe')
+  } else {
+    res.status(204).send(elementDelete[0])
+  }
+
+})
 
 app.listen(PORT, () => {
   console.log(`Server is listenning on port ${PORT}`)

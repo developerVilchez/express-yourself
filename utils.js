@@ -84,10 +84,20 @@ const seedElements = (arr, type) => {
   return arr;
 };
 
+const deleteElementById = (id, elementList) => {
+  const index = getIndexById(id, elementList);
+  if(index === -1) {
+    return false;
+  } else {
+    return elementList.splice(index,1);
+  }
+}
+
 module.exports = {
   createElement: createElement,
   getIndexById: getIndexById,
   getElementById: getElementById,
   updateElement: updateElement,
   seedElements: seedElements,
+  deleteElementById : deleteElementById
 };
