@@ -63,6 +63,45 @@ app.get('/expressions/:id/:name', (req, res, next) => {
 
 ```
 
+- Express nos permite establecer el `código de estado http` antes de que se envíe, estos códigos de respuesta, brindan información a los clientes sobre cómo se manejan sus solicitudes. Por default, cualquier `res.send()` envía por defecto el código de estado `200`
+
+- El objeto `res` tiene el método `.status()` que te permite configurar el código de estado y otros 
+métodos como `.send()` pueden ser encadenados desde ahí
+
+```js
+const monsterStoreInventory = { fenrirs: 4, banshees: 1, jerseyDevils: 4, krakens: 3 };
+
+app.get('/monsters-inventory/:name', (req, res, next) => {
+  const monsterInventory = monsterStoreInventory[req.params.name];
+  if (monsterInventory) {
+    res.send(monsterInventory);
+  } else {
+    res.status(404).send('Monster not found');
+  }
+});
+```
+- Los paŕametros son extremadamente útiles para hacer que las rutas del servidor
+sean dinámicas y capaces de responder a diferentes entradas.
+
+- Recuerda que para que una solicitud sea respondida por el servidor, la ruta debe coincidir
+completamente con el path definido
+
+```js
+cliente : request('/expressions/1')
+
+1.- app.get('/expressions', (req, res, next) => {
+  res.send(getAllExpressions());
+})
+
+2.- app.get('/expressions/:id', (req, res, next) => {
+  const expresion = getExpressionById(req.params.id) 
+  res.send(expresion); // se envía la respuesta
+})
+
+Primero pasa por 1 y como la ruta no coincide con el path, salta al 2, 
+como coincide la ruta con el path, se invoca a la función de callback que maneja a esa ruta.
+
+```
 
 ### Correlación entre ruta y verbo http
 
