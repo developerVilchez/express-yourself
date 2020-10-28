@@ -20,6 +20,28 @@ crear, recuperar, actualizar y eliminar de data, a través de una aplicación we
 - Las solicitudes se manejan en el servidor según la ruta y el verbo http
 ![Crud](images_readme/crud.png)
 - HTTP sigue un ciclo de 1 solicitud y 1 respuesta, es decir, cada cliente espera exactamente una respuesta por solicitud,  y cada servidor debe enviar una única respuesta al cliente por cada solicitud que este le haga.
+- Express busca a través de las rutas en el orden en que están registradas en tu código. Utiliza el primerro que coincida y se llamará a su función de callback.
+
+```js
+  cliente
+  request get('/expressions')
+
+  1.- app.get('/anothe-route', (req, res, next) => {
+    //Manejador de la ruta
+  })
+
+  2.- app.get('/expressions', (req, res, next) => {
+    res.send();  //sends response
+  })
+
+pasa primero por 1, pero como el `path: /expressions` no coincide, 
+salta al 2, como el path solicitado coincide con  2, se invoca a la función de callback 
+y se envía la respuesta que en ella esté indicada.
+Si no hay rutas coincidentes registradas o el servidor express no ha enviado una
+respuesta al final de todas las rutas coincidentes, enviará automaticamente una
+respuesta `404 not found`
+
+```
 
 
 ### Correlación entre ruta y verbo http
