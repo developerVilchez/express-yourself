@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const { seedElements } = require('./utils');
+const { seedElements, getElementById} = require('./utils');
 
 const arrExpressions = [];
 // Poblamos la función arrExpressions
@@ -13,11 +13,18 @@ seedElements(arrExpressions, 'expressions');
 app.use(express.static(path.join(__dirname, 'public')))
 
 //Rutas
-
+//Se envían todas las expresiones
 app.get('/expressions', (req, res, next) => {
   res.send(arrExpressions);
 })
 
+//Rutas con parámetros
+//Se envia solo una expresión seleccionado por el atributo id
+app.get('/expressions/:id', (req, res, next) => {
+  const id = req.params.id
+  const elemento = getElementById(id, arrExpressions);
+  res.send(elemento);
+})
 
 
 const PORT = 4000 || process.env.PORT;
