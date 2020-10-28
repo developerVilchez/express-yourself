@@ -122,6 +122,8 @@ envíar más información al momento que el cliente realiza una petición. Suele
 - El método del tipo `post` nos permite crear un nuevo elemento en la base de datos. Por lo tanto 
 al momento de hacer el request tendremos que envíar los datos que queremos que tenga este nuevo recurso, para ello nos volveremos a apoyar del `query string`
 
+- El método `delete` es utilizado para eliminar recursos. Si queremos utilizarlo debemos indicar qué recurso quiero eliminar e identificarlo de manera única. Al terminar con esta operación el servidor suele enviar el código `204 - no content` si la eliminación ocurrio sin errores 
+
 
 ```js
  const ruta = 'http://localhost:4000/expressions/1?name=lulu&age=12'
