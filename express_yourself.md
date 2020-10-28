@@ -64,6 +64,24 @@ app.get('/expressions/:id/:name', (req, res, next) => {
 ```
 
 
+- Express nos permite establecer el `código de estado http` antes de que se envíe, estos códigos de respuesta, brindan información a los clientes sobre cómo se manejan sus solicitudes. Por default, cualquier `res.send()` envía por defecto el código de estado `200`
+
+- El objeto `res` tiene el método `.status()` que te permite configurar el código de estado y otros 
+métodos como `.send()` pueden ser encadenados desde ahí
+
+```js
+const monsterStoreInventory = { fenrirs: 4, banshees: 1, jerseyDevils: 4, krakens: 3 };
+
+app.get('/monsters-inventory/:name', (req, res, next) => {
+  const monsterInventory = monsterStoreInventory[req.params.name];
+  if (monsterInventory) {
+    res.send(monsterInventory);
+  } else {
+    res.status(404).send('Monster not found');
+  }
+});
+```
+
 ### Correlación entre ruta y verbo http
 
 - uri : `http://localhost:4000/`
